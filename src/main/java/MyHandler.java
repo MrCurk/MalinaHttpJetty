@@ -9,6 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MyHandler extends AbstractHandler{
+    PiFaceLogic p;
+
+    public MyHandler(PiFaceLogic p) {
+        this.p = p;
+    }
+
     @Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=utf-8");
@@ -18,5 +24,7 @@ public class MyHandler extends AbstractHandler{
         response.getWriter().println("<h2>");
         response.getWriter().print(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
         response.getWriter().println("</h2>");
+
+        response.getWriter().println(p.returnStatusAll());
     }
 }

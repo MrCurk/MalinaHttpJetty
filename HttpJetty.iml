@@ -23,6 +23,9 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.2.2.v20140723" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:9.2.2.v20140723" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:9.2.2.v20140723" level="project" />
+    <orderEntry type="library" name="Maven: com.pi4j:pi4j-core:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.pi4j:pi4j-device:0.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.pi4j:pi4j-gpio-extension:0.0.5" level="project" />
   </component>
 </module>
 
