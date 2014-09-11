@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 Class-Path: javax.servlet-api-3.1.0.jar jetty-http-9.2.2.v20140723.jar
   jetty-io-9.2.2.v20140723.jar jetty-server-9.2.2.v20140723.jar jetty-
- util-9.2.2.v20140723.jar
+ util-9.2.2.v20140723.jar pi4j-core-0.0.5.jar pi4j-device-0.0.5.jar pi
+ 4j-gpio-extension-0.0.5.jar
 Main-Class: Main
 
