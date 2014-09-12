@@ -4,18 +4,24 @@ public class Main {
 
 
     public static void main(String[] args) {
-        PiFaceLogic p;
         int port = 8888;
+        PiFaceLogic pi;
+        SimpleServer myHttpServer;
+        KeybordInput commands;
 
         try {
 
-            p = new PiFaceLogic();
-            new Thread(p).start();
-            new KeybordInput(p);
-            new SimpleServer(port, p);
+            pi = new PiFaceLogic();
+
+            myHttpServer = new SimpleServer(port,pi);
+
+            commands = new KeybordInput(pi);
+
+            new Thread(pi).start();
+            new Thread(commands).start();
+            new Thread(myHttpServer).start();
 
         } catch (IOException e) {
-            System.out.println("Error on PiFaceLogic");
             e.printStackTrace();
         }
 

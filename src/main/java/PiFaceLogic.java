@@ -148,22 +148,25 @@ public class PiFaceLogic implements Runnable {
 
                 command = Command.WAITING;
             }
-
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("PiFace shutdown!");
         System.exit(1);
     }
-
-    String returnStatusAll() {
-
-        String outString = null;
-        for (int i = 0; i < 8; i++) {
-            outString = outString + "input " + i + " : " + getStatusInput(i)
-                    + "\t output " + i + " : " + getStatusOutput(i);
-        }
-        return outString;
+//public
+    String getStatusInputOutput(int i) {
+        return  "input " + i + " : " + getStatusInput(i) + "\t output " + i + " : " + getStatusOutput(i);
     }
 
+    void doCommand(Command command) {
+        this.command = command;
+    }
+
+// public end
     private void displayStatusAll() {
 
         for (int i = 0; i < 8; i++) {
@@ -208,6 +211,7 @@ public class PiFaceLogic implements Runnable {
         System.out.println("op[0-7] on - turn output n on.");
         System.out.println("op[0-7] off - turn output n off.");
         System.out.println("status -  display status of inputs and outputs ");
+        System.out.println("s -  display status of inputs and outputs ");
         System.out.println("q - exit");
         System.out.println("exit - exit");
 
@@ -216,10 +220,6 @@ public class PiFaceLogic implements Runnable {
     private void shutdownPiFace() {
         runningCondition = false;
         setOutputAllOff();
-    }
-
-    public void doCommand(Command command) {
-        this.command = command;
     }
 
 }

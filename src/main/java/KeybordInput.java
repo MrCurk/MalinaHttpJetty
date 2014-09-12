@@ -1,9 +1,15 @@
 import java.util.Scanner;
 
-public class KeybordInput {
+public class KeybordInput implements Runnable {
+
+    private PiFaceLogic pi;
 
     public KeybordInput(PiFaceLogic pi) {
+        this.pi = pi;
+    }
 
+    @Override
+    public void run() {
         Scanner scanner = new Scanner(System.in);
         String keybordInputString;
         Command command = Command.HELP;
@@ -13,14 +19,8 @@ public class KeybordInput {
             keybordInputString = scanner.nextLine();
             command = Command.parseCommand(keybordInputString);
             pi.doCommand(command);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
         scanner.close();
     }
-
 }

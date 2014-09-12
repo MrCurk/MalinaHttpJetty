@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar lib/main.jar
+sudo java -jar lib/main.jar

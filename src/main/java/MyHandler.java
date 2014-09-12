@@ -25,6 +25,13 @@ public class MyHandler extends AbstractHandler{
         response.getWriter().print(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
         response.getWriter().println("</h2>");
 
-        response.getWriter().println(p.returnStatusAll());
+        response.getWriter().println(p.getStatusInputOutput(0));
+        response.getWriter().println(p.getStatusInputOutput(1));
+        response.getWriter().println(p.getStatusInputOutput(2));
+        response.getWriter().println(p.getStatusInputOutput(3));
+        response.getWriter().println(p.getStatusInputOutput(4));
+        response.getWriter().println(p.getStatusInputOutput(5));
+        response.getWriter().println(p.getStatusInputOutput(6));
+        response.getWriter().println(p.getStatusInputOutput(7));
     }
 }
