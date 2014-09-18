@@ -1,3 +1,5 @@
+package mr.curk.piface;
+
 public enum Command {
     OP0_ON, OP0_OFF, OP1_ON, OP1_OFF, OP2_ON, OP2_OFF, OP3_ON, OP3_OFF, OP4_ON, OP4_OFF, OP5_ON, OP5_OFF, OP6_ON, OP6_OFF, OP7_ON, OP7_OFF, HELP, QUIT, STATUS,WAITING;
 

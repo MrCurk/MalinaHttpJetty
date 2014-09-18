@@ -1,3 +1,6 @@
+package mr.curk.webJetty;
+
+import mr.curk.piface.PiFaceLogic;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 

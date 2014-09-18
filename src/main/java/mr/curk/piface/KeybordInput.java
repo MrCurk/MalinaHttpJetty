@@ -1,3 +1,5 @@
+package mr.curk.piface;
+
 import java.util.Scanner;
 
 public class KeybordInput implements Runnable {

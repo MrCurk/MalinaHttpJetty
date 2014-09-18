@@ -1,3 +1,7 @@
+package mr.curk.webJetty;
+
+import mr.curk.piface.Command;
+import mr.curk.piface.PiFaceLogic;
 import org.eclipse.jetty.server.Server;
 
 public class SimpleServer implements Runnable{

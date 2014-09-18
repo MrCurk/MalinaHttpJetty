@@ -1,4 +1,4 @@
-import java.io.IOException;
+package mr.curk.piface;
 
 import com.pi4j.component.switches.SwitchListener;
 import com.pi4j.component.switches.SwitchState;
@@ -7,6 +7,8 @@ import com.pi4j.device.piface.PiFace;
 import com.pi4j.device.piface.PiFaceSwitch;
 import com.pi4j.device.piface.impl.PiFaceDevice;
 import com.pi4j.wiringpi.Spi;
+
+import java.io.IOException;
 
 public class PiFaceLogic implements Runnable {
 
@@ -158,11 +160,11 @@ public class PiFaceLogic implements Runnable {
         System.exit(1);
     }
 //public
-    String getStatusInputOutput(int i) {
-        return  "input " + i + " : " + getStatusInput(i) + "\t output " + i + " : " + getStatusOutput(i);
+    public String getStatusInputOutput(int i) {
+        return  "input " + i + " : " + getStatusInput(i) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output " + i + " : " + getStatusOutput(i);
     }
 
-    void doCommand(Command command) {
+    public void doCommand(Command command) {
         this.command = command;
     }
 

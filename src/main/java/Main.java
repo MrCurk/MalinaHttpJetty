@@ -1,4 +1,7 @@
-import java.io.IOException;
+import mr.curk.piface.KeybordInput;
+import mr.curk.piface.PiFaceLogic;
+import mr.curk.webJetty.SimpleServer;
+import mr.curk.webJettyResteasy.HttpServer;
 
 public class Main {
 
@@ -6,24 +9,21 @@ public class Main {
     public static void main(String[] args) {
         int port = 8888;
         PiFaceLogic pi;
-        SimpleServer myHttpServer;
+        HttpServer httpServer;
         KeybordInput commands;
 
-        try {
 
-            pi = new PiFaceLogic();
+        //pi = new PiFaceLogic();
 
-            myHttpServer = new SimpleServer(port,pi);
 
-            commands = new KeybordInput(pi);
 
-            new Thread(pi).start();
-            new Thread(commands).start();
-            new Thread(myHttpServer).start();
+        new Thread(new HttpServer(port)).start();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        //new Thread(new SimpleServer(port,pi)).start();
+        //commands = new KeybordInput(pi);
+        //new Thread(pi).start();
+        //new Thread(commands).start();
 
 
     }
