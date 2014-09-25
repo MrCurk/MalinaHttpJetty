@@ -2,22 +2,27 @@ package mr.curk.webUndertow;
 
 
 import io.undertow.Undertow;
-import io.undertow.server.HttpHandler;
-import io.undertow.server.HttpServerExchange;
-import io.undertow.util.Headers;
 
-public class undertowServer {
+import static io.undertow.Handlers.path;
+
+public class UndertowServer {
+
 
     public static void main(final String[] args) {
-        Undertow server = Undertow.builder()
-                .addHttpListener(9999, "localhost")
-                .setHandler(new HttpHandler() {
-                    @Override
-                    public void handleRequest(final HttpServerExchange exchange) throws Exception {
-                        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
-                        exchange.getResponseSender().send("Hello World");
-                    }
-                }).build();
+
+
+        Undertow.Builder builder = Undertow.builder();
+        builder.addHttpListener(8888, "localhost");
+
+        builder.setHandler(path().addPrefixPath("/aaa", new MyUndertowHandler()).addPrefixPath("/ccc", new MyUndertowHandler1()));
+
+
+
+        Undertow server = builder.build();
         server.start();
+
+
     }
+
+
 }
