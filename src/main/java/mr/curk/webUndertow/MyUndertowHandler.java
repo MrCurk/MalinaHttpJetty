@@ -5,6 +5,9 @@ import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
 import io.undertow.util.HttpString;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class MyUndertowHandler implements HttpHandler {
     private final HttpString header;
@@ -36,14 +39,21 @@ public class MyUndertowHandler implements HttpHandler {
 
         exchange.getResponseHeaders().put(header, value);
 
-        setHtmlPage(exchange.getRequestMethod());
+        setHtmlPage(exchange.getRequestMethod(), exchange.getRequestPath().toString(), true, 5);
         exchange.getResponseSender().send(htmlPage);
     }
 
-    private void setHtmlPage(HttpString s) {
-        htmlPage = "Hello my friend <br>" + s;
-    }
+    private String setHtmlPage(HttpString requestMetode, String title, boolean avtoRefresh, int seconds) {
+        if (avtoRefresh) {
+            htmlPage = "<head><title>" + title + "</title><meta http-equiv=\"refresh\" content=\"" + seconds + "\"></head>";
+        } else {
+            htmlPage = "<head><title>" + title + "</title></head>";
+        }
 
+        htmlPage = "<html>" + htmlPage + "<body><h1>RaspberryPi</h1><br><h2>" + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()) + "</h2><p><a href=\"http://localhost:8888/ccc\">Refresh 1 seconds</a></p><p>" + requestMetode + "</p></body><html>";
+
+        return htmlPage;
+    }
 
 
 }

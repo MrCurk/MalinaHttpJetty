@@ -5,11 +5,15 @@ import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
 import io.undertow.util.HttpString;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class MyUndertowHandler1 implements HttpHandler {
     private final HttpString header;
     private final String value;
     private final HttpHandler next;
+    private String htmlPage;
 
     public MyUndertowHandler1() {
         this.header = Headers.CONTENT_TYPE;
@@ -34,8 +38,23 @@ public class MyUndertowHandler1 implements HttpHandler {
     public void handleRequest(final HttpServerExchange exchange) throws Exception {
 
         exchange.getResponseHeaders().put(header, value);
-        exchange.getResponseSender().send("Hello World My Friend111111111111111111");
+
+        setHtmlPage(exchange.getRequestMethod(), exchange.getRequestPath().toString(), true, 1);
+        exchange.getResponseSender().send(htmlPage);
     }
+
+    private String setHtmlPage(HttpString requestMetode, String title, boolean avtoRefresh, int seconds) {
+        if (avtoRefresh) {
+            htmlPage = "<head><title>" + title + "</title><meta http-equiv=\"refresh\" content=\"" + seconds + "\"></head>";
+        } else {
+            htmlPage = "<head><title>" + title + "</title></head>";
+        }
+
+        htmlPage = "<html>" + htmlPage + "<body><h1>RaspberryPi</h1><br><h2>" + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()) + "</h2><p><a href=\"http://localhost:8888/aaa\">Refresh 5 seconds</a></p><p>" + requestMetode + "</p></body><html>";
+
+        return htmlPage;
+    }
+
 
 
 }
